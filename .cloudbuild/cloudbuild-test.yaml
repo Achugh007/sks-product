@@ -1,1 +1,19 @@
+steps:
+  # Step 1: Set up the environment
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['auth', 'activate-service-account', '--key-file=/workspace/your-service-account-key.json']
+
+  # Step 2: Install dependencies
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+
+  # Step 3: Run tests
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['test']
+
+  # Step 4: Lint code
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'lint']
+
+timeout: '900s'  # Set timeout for 15 minutes
 
